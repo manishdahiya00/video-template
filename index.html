@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Landing Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div class="video-grid">
+    <div class="video-thumbnail" onclick="openPopup(0)">
+      <video src="video1.mp4" muted autoplay></video>
+    </div>
+    <div class="video-thumbnail" onclick="openPopup(1)">
+      <video src="video2.mp4" muted autoplay></video>
+    </div>
+    <div class="video-thumbnail" onclick="openPopup(2)">
+      <video src="video3.mp4" muted autoplay></video>
+    </div>
+    <div class="video-thumbnail" onclick="openPopup(3)">
+      <video src="video4.mp4" muted autoplay></video>
+    </div>
+    <div class="video-thumbnail" onclick="openPopup(4)">
+      <video src="video5.mp4" muted autoplay></video>
+    </div>
+    <div class="video-thumbnail" onclick="openPopup(5)">
+      <video src="video6.mp4" muted autoplay></video>
+    </div>
+  </div>
+
+  <div id="video-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <div class="video-wrapper">
+        <div class="side-video" id="prev-video" onclick="prevVideo()">
+          <video src="" muted></video>
+        </div>
+
+        <div class="video-container">
+          <button class="nav-btn left" onclick="prevVideo()">&#10094;</button>
+          <video id="popup-video" autoplay muted></video>
+          <button class="nav-btn right" onclick="nextVideo()">&#10095;</button>
+        </div>
+
+        <div class="side-video" id="next-video" onclick="nextVideo()">
+          <video src="" muted></video>
+        </div>
+      </div>
+
+      <div class="video-actions">
+        <button id="like-btn" onclick="likeVideo()">👍</button>
+        <button id="share-btn" onclick="shareVideo()">🔗</button>
+        <button id="mute-btn" onclick="toggleMute()">🔇</button>
+      </div>
+
+      <div class="cart-section">
+        <div class="cart-item">
+          <img src="https://placehold.co/600x600/EEE/31343C" alt="Product Image">
+          <div class="cart-details">
+            <p>Advanced Hair Growth Serum</p>
+            <p class="price">₹799 <span class="old-price">₹1,695</span></p>
+          </div>
+        </div>
+        <button id="add-to-cart" class="add-to-cart-btn">🛒</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
