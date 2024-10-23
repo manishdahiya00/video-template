@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#render-videos {
+  height: 40vh;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+}
+.productDesc {
+  white-space: nowrap; /* Keeps the text on a single line */
+  overflow: hidden; /* Hides any overflowed content */
+  text-overflow: ellipsis; /* Displays ellipsis (...) for overflowed content */
+  max-width: 200px; /* Set a max width for the truncation to work */
+}
+.videos {
+  overflow-x: auto;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+  scrollbar-width: none; /* Firefox */
+}
+
+.videos::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.video {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 9/16;
+  border-radius: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: rgba(236, 229, 229, 0.8);
+  color: black;
+  border-radius: 50%;
+  border: none;
+  font-size: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.leftBtn {
+  left: 10px;
+}
+
+.rightBtn {
+  right: 10px;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 1200px;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  border-radius: 20px;
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  z-index: 150;
+}
+
+#popupInner {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 80vh;
+}
+
+.prevVideo,
+.nextVideo,
+.mainVideo {
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.prevVideo {
+  width: 25%;
+  z-index: 0;
+  transform: translateX(-15px) scale(0.7);
+  opacity: 0.6;
+}
+
+.mainVideo {
+  width: 35%;
+  z-index: 1;
+  transform: scale(1);
+}
+
+.nextVideo {
+  width: 25%;
+  z-index: 0;
+  transform: translateX(15px) scale(0.7);
+  opacity: 0.6;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoLeft,
+.videoRight,
+.like,
+.share,
+.mute {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(236, 229, 229, 0.8);
+  color: black;
+  border-radius: 50%;
+  border: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.videoLeft {
+  left: 32%;
+  top: 50%;
+}
+
+.videoRight {
+  right: 32%;
+  top: 50%;
+}
+
+.like {
+  right: 35%;
+  bottom: 45%;
+}
+
+.share {
+  right: 35%;
+  bottom: 35%;
+}
+
+.mute {
+  right: 35%;
+  bottom: 25%;
+}
+
+.productCard {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.productImage {
+  height: 80px;
+  width: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.productDetails {
+  color: white;
+  flex: 1;
+}
+
+.productDesc {
+  white-space: nowrap; /* Keeps the text on a single line */
+  overflow: hidden; /* Hides any overflowed content */
+  text-overflow: ellipsis; /* Displays ellipsis (...) for overflowed content */
+  max-width: 200px; /* Set a max width for the truncation to work */
+}
+
+.addToCartBtn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.addToCartBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .prevVideo,
+  .nextVideo {
+    display: none;
+  }
+
+  .mainVideo {
+    width: 100%;
+    max-height: 80vh;
+  }
+
+  .videoLeft {
+    left: 8px;
+  }
+
+  .videoRight {
+    right: 8px;
+  }
+  .productDesc {
+    white-space: nowrap; /* Keeps the text on a single line */
+    overflow: hidden; /* Hides any overflowed content */
+    text-overflow: ellipsis; /* Displays ellipsis (...) for overflowed content */
+    max-width: 200px; /* Set a max width for the truncation to work */
+  }
+  .like,
+  .share,
+  .mute {
+    right: 12%;
+  }
+}
+
+@media (max-width: 768px) {
+  .video {
+    height: auto;
+  }
+
+  .button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .productCard {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .productImage {
+    height: 60px;
+    width: 60px;
+  }
+
+  .productDesc {
+    font-size: 12px;
+  }
+
+  .addToCartBtn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video {
+    width: 85vw;
+  }
+
+  .button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .videoLeft,
+  .videoRight,
+  .like,
+  .share,
+  .mute {
+    width: 35px;
+    height: 35px;
+  }
+
+  .productCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .productImage {
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+  }
+}
